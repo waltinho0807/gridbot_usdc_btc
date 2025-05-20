@@ -1,6 +1,6 @@
 module.exports = {
-    API_KEY: 'u5GNi8ViyY58FVTE3Idklnl859LCrImnuYUrsjwYx0NTjuFLG4Hbe9VXvhFaW9Bv',
-    SECRET_KEY: 'yOvODvjhK75fiiuN0x7sMhicWzVNNg1UV7UixeeR2RVUrGDeUGfQ1amwwrD2xg4b',
+    API_KEY: '',
+    SECRET_KEY: '',
     SYMBOL: 'BTC/USDC',
     GRID_SIZE: 300, // distância entre as ordens
     POSITION_SIZE: 10, // quantidade de BTC por ordem
