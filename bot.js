@@ -45,7 +45,7 @@ function saveOrders(buyOrders, sellOrders) {
 
         log(`🟢 Criando ordem de COMPRA em ${buyPrice} com ${amountBTC} BTC`);
         const order = await exchange.createLimitBuyOrder(config.SYMBOL, amountBTC, buyPrice);
-        buyOrders.push({ ...order.info, amount: amountBTC });
+        buyOrders.push({ id: order.id, amount: amountBTC });
     }
 
     // Criar ordens de venda (acima do preço atual)
@@ -101,7 +101,7 @@ function saveOrders(buyOrders, sellOrders) {
                     const newBuyPrice = parseFloat(order.price) - config.GRID_SIZE;
                     log(`🔁 Criando nova COMPRA em ${newBuyPrice}`);
                     const newBuy = await exchange.createLimitBuyOrder(config.SYMBOL, sellAmountBTC, newBuyPrice);
-                    buyOrders.push({ id: order.id, amount: amountBTC });
+                    buyOrders.push({ id: newBuy.id, amount: sellAmountBTC });
 
                 }
             } catch (e) {
