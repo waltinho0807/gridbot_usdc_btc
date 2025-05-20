@@ -82,7 +82,7 @@ function saveOrders(buyOrders, sellOrders) {
                     const newSellPrice = parseFloat(order.price) + config.GRID_SIZE;
                     log(`🔁 Criando nova VENDA em ${newSellPrice}`);
                     const newSell = await exchange.createLimitSellOrder(config.SYMBOL, buyAmountBTC, newSellPrice);
-                    sellOrders.push({ ...newSell.info, amount: buyAmountBTC });
+                    sellOrders.push({ id: newSell.id, amount: buyAmountBTC });
                 }
             } catch (e) {
                 log(`Erro ao verificar ordem de compra ${buyOrder.id}: ${e.message}`);
@@ -101,7 +101,8 @@ function saveOrders(buyOrders, sellOrders) {
                     const newBuyPrice = parseFloat(order.price) - config.GRID_SIZE;
                     log(`🔁 Criando nova COMPRA em ${newBuyPrice}`);
                     const newBuy = await exchange.createLimitBuyOrder(config.SYMBOL, sellAmountBTC, newBuyPrice);
-                    buyOrders.push({ ...newBuy.info, amount: sellAmountBTC });
+                    buyOrders.push({ id: order.id, amount: amountBTC });
+
                 }
             } catch (e) {
                 log(`Erro ao verificar ordem de venda ${sellOrder.id}: ${e.message}`);
