@@ -73,7 +73,7 @@ function saveOrders(buyOrders, sellOrders) {
 
         for (const buyOrder of buyOrders) {
             try {
-                const order = await exchange.fetchOrder(buyOrder.id);
+                const order = await exchange.fetchOrder(buyOrder.id, config.SYMBOL);
                 if (order.info.status === config.CLOSED_ORDER_STATUS) {
                     log(`✅ Ordem de compra executada a ${order.price}`);
                     closedOrderIds.push(order.id);
@@ -92,7 +92,7 @@ function saveOrders(buyOrders, sellOrders) {
 
         for (const sellOrder of sellOrders) {
             try {
-                const order = await exchange.fetchOrder(sellOrder.id);
+                const order = await exchange.fetchOrder(sellOrder.id, config.SYMBOL);
                 if (order.info.status === config.CLOSED_ORDER_STATUS) {
                     log(`✅ Ordem de venda executada a ${order.price}`);
                     closedOrderIds.push(order.id);
