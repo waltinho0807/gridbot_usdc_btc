@@ -51,9 +51,9 @@ function saveOrders(buyOrders, sellOrders) {
     // Criar ordens de venda (acima do preço atual)
     for (let i = 1; i <= config.NUM_SELL_GRID_LINES; ++i) {
         let sellPrice = price + (config.GRID_SIZE * i);
-        log(`🔴 Criando ordem de VENDA em ${sellPrice}`);
-        const order = await exchange.createLimitSellOrder(config.SYMBOL, config.POSITION_SIZE, sellPrice);
-        sellOrders.push(order.info);
+        //log(`🔴 Criando ordem de VENDA em ${sellPrice}`);
+        //const order = await exchange.createLimitSellOrder(config.SYMBOL, config.POSITION_SIZE, sellPrice);
+        //sellOrders.push(order.info);
     }
 
     saveOrders(buyOrders, sellOrders);
@@ -79,6 +79,7 @@ function saveOrders(buyOrders, sellOrders) {
                     closedOrderIds.push(order.id);
                     // Criar ordem de venda com mesma quantidade de BTC comprada
                     const buyAmountBTC = parseFloat(buyOrder.amount);
+                    const newSellPrice = parseFloat(order.price) + config.GRID_SIZE;
                     log(`🔁 Criando nova VENDA em ${newSellPrice}`);
                     const newSell = await exchange.createLimitSellOrder(config.SYMBOL, buyAmountBTC, newSellPrice);
                     sellOrders.push({ ...newSell.info, amount: buyAmountBTC });
