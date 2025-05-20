@@ -29,11 +29,11 @@ function saveOrders(buyOrders, sellOrders) {
     const quoteCurrency = config.SYMBOL.split('/')[1]; // Ex: USDT
     const availableFunds = balance.free[quoteCurrency];
 
-    const requiredFunds = config.POSITION_SIZE * (config.NUM_BUY_GRID_LINES +  config.NUM_SELL_GRID_LINES);
-    if (requiredFunds > availableFunds) {
-        log(`❌ Saldo insuficiente. Requerido: ${requiredFunds}, Disponível: ${availableFunds}`);
-        process.exit(1);
-    }
+    //const requiredFunds = config.POSITION_SIZE * (config.NUM_BUY_GRID_LINES +  config.NUM_SELL_GRID_LINES);
+    //if (requiredFunds > availableFunds) {
+      //  log(`❌ Saldo insuficiente. Requerido: ${requiredFunds}, Disponível: ${availableFunds}`);
+       // process.exit(1);
+   // }
 
     let buyOrders = [];
     let sellOrders = [];
