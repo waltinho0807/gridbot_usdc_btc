@@ -114,7 +114,7 @@ function saveOrders(buyOrders, sellOrders) {
         sellOrders = sellOrders.filter(o => !closedOrderIds.includes(o.id));
         saveOrders(buyOrders, sellOrders);
 
-        if (sellOrders.length === 0 && buyOrders.length) {
+        if (sellOrders.length === 0 && buyOrders.length === 0) {
             log(`🔚 Nenhuma ordem de venda restante. Encerrando bot.`);
             process.exit(1);
         }
